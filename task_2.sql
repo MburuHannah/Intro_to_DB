@@ -1,6 +1,6 @@
 USE alx_book_store;
 
-CREATE TABLE books(
+CREATE TABLE if not exists books(
 book_id INT PRIMARY KEY,
 title VARCHAR(130),
 author_id INT,
@@ -9,12 +9,12 @@ publication_date DATE,
 FOREIGN KEY (author_id) REFERENCES Authors(author_id)
 );
 
-CREATE TABLE Authors(
+CREATE TABLE  if not exists Authors(
 author_id INT PRIMARY KEY,
 author_name VARCHAR(215)
 );
 
-CREATE TABLE Customers(
+CREATE TABLE if not exists Customers(
 customer_id INT PRIMARY KEY,
 customer_name VARCHAR(215),
 email VARCHAR(215),
@@ -23,14 +23,14 @@ address TEXT
 
 );
 
-CREATE TABLE Orders(
+CREATE TABLE if not exists Orders(
 order_id INT PRIMARY KEY,
 customer_id INT,
 order_date DATE,
 FOREIGN KEY (customer_id ) REFERENCES Customers(customer_id)
 );
 
-CREATE TABLE Order_Details(
+CREATE TABLE if not exists Order_Details(
 orderdetailid INT PRIMARY KEY,
 order_id INT,
 book_id INT,
